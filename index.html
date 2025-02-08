@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Card</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card">
+    <div class="envelope" onclick="openEnvelope()">
+      <div class="stamp"></div>
+      <div class="letter-in-envelope"><p style="font-family:'freestyle script'" > For my love, <br> Shubham </p></div>
+    </div>
+    <div class="letter hidden" id="letter">
+        <img src="https://i.pinimg.com/originals/17/5d/d3/175dd321b228e72ef723cafdf430eb35.gif" style="width:180px; height:150px ">
+        <p style="font-family:'freestyle script'">Will you be my Valentine?</p>
+      <div class="button-container">
+        <button onclick="handleYes()">Yes</button>
+        <button onclick="handleNo()">No</button>
+      </div>
+    </div>
+    <div class="final-letter hidden" id="final-letter">
+        <p>YAY !</p>
+      <img src="https://i.pinimg.com/originals/96/91/0a/96910a7cedeff19c958ac2a78286bd6f.gif" style="width:150px; height:140px;">
+      <p style="font-family:'freestyle script'" >❤️I LOVE YOU !❤️<br>💕💕💕</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
