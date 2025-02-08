@@ -1,37 +1,50 @@
 function openEnvelope() {
-    const envelope = document.querySelector('.envelope');
-    const letter = document.getElementById('letter');
+  const envelope = document.querySelector('.envelope');
+  const letter = document.getElementById('letter');
+
+  envelope.classList.add('hidden');
+  letter.classList.remove('hidden');
+}
+
+function handleYes() {
+  const letter = document.getElementById('letter');
+  const finalLetter = document.getElementById('final-letter');
   
-    envelope.classList.add('hidden');
-    letter.classList.remove('hidden');
-  }
+  // Remove all dynamically created "Yes" buttons
+  const yesButtons = document.querySelectorAll('.dynamic-yes-button');
+  yesButtons.forEach(button => {
+      button.remove(); // Remove all buttons with the class
+  });
   
-  function handleYes() {
-    const letter = document.getElementById('letter');
-    const finalLetter = document.getElementById('final-letter');
-        // Remove all dynamically created "Yes" buttons
-    const yesButtons = document.querySelectorAll('button[onclick="handleYes()"]');
-    yesButtons.forEach(button => {
-        if (button.parentElement === document.body) {
-            button.remove(); // Remove only the dynamically created buttons
-        }
-    });
-    letter.classList.add('hidden');
-    finalLetter.classList.remove('hidden');
-  }
+  letter.classList.add('hidden');
+  finalLetter.classList.remove('hidden');
+}
+
+function createYesButton() {
+  const yesButton = document.createElement('button');
+  yesButton.textContent = 'Yes';
+  yesButton.classList.add('dynamic-yes-button'); // Add a specific class
+  yesButton.onclick = handleYes;
+  yesButton.style.position = 'absolute';
   
-  function handleNo() {
-    const yesButton = document.createElement('button');
-    yesButton.textContent = 'Yes';
-    yesButton.onclick = handleYes;
+  // Random position within the viewport
+  const x = Math.random() * (window.innerWidth - 100); // Adjust for button width
+  const y = Math.random() * (window.innerHeight - 50); // Adjust for button height
   
-    // Random position for the "Yes" button
-    const x = Math.random() * (window.innerWidth - 100); // Random X position
-    const y = Math.random() * (window.innerHeight - 50); // Random Y position
+  yesButton.style.left = `${x}px`;
+  yesButton.style.top = `${y}px`;
   
-    yesButton.style.position = 'absolute';
-    yesButton.style.left = `${x}px`;
-    yesButton.style.top = `${y}px`;
+  // Add some basic styling
+  yesButton.style.padding = '10px 20px';
   
-    document.body.appendChild(yesButton); // Add the button to the body
-  }
+  yesButton.style.color = 'white';
+  yesButton.style.border = 'none';
+  yesButton.style.borderRadius = '5px';
+  yesButton.style.cursor = 'pointer';
+  
+  document.body.appendChild(yesButton);
+}
+
+function handleNo() {
+  createYesButton();
+}
